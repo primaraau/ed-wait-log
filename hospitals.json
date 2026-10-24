@@ -1,0 +1,422 @@
+[
+ {
+  "name": "Armidale Rural Referral Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Armidale",
+  "postcode": "2350",
+  "hospitalID": 2
+ },
+ {
+  "name": "Auburn Hospital & Community Health Services",
+  "lhd": "Western Sydney Local Health District",
+  "suburb": "Auburn",
+  "postcode": "2144",
+  "hospitalID": 3
+ },
+ {
+  "name": "Bankstown Lidcombe Hospital",
+  "lhd": "South Western Sydney Local Health District",
+  "suburb": "Bankstown",
+  "postcode": "2200",
+  "hospitalID": 7
+ },
+ {
+  "name": "Bathurst Base Hospital",
+  "lhd": "Western NSW Local Health District",
+  "suburb": "Bathurst",
+  "postcode": "2795",
+  "hospitalID": 12
+ },
+ {
+  "name": "Belmont Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Belmont",
+  "postcode": "2280",
+  "hospitalID": 16
+ },
+ {
+  "name": "Blacktown Hospital",
+  "lhd": "Western Sydney Local Health District",
+  "suburb": "Blacktown",
+  "postcode": "2148",
+  "hospitalID": 19
+ },
+ {
+  "name": "Blue Mountains District ANZAC Memorial Hospital",
+  "lhd": "Nepean Blue Mountains Local Health District",
+  "suburb": "Katoomba",
+  "postcode": "2780",
+  "hospitalID": 22
+ },
+ {
+  "name": "Bowral Hospital",
+  "lhd": "South Western Sydney Local Health District",
+  "suburb": "Bowral",
+  "postcode": "2576",
+  "hospitalID": 28
+ },
+ {
+  "name": "Broken Hill Base Hospital",
+  "lhd": "Far West Local Health District",
+  "suburb": "Broken Hill",
+  "postcode": "2880",
+  "hospitalID": 32
+ },
+ {
+  "name": "Calvary Mater Newcastle",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Waratah",
+  "postcode": "2298",
+  "hospitalID": 224
+ },
+ {
+  "name": "Campbelltown Hospital",
+  "lhd": "South Western Sydney Local Health District",
+  "suburb": "Campbelltown",
+  "postcode": "2560",
+  "hospitalID": 39
+ },
+ {
+  "name": "Canterbury Hospital",
+  "lhd": "Sydney Local Health District",
+  "suburb": "Campsie",
+  "postcode": "2194",
+  "hospitalID": 41
+ },
+ {
+  "name": "Cessnock District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Cessnock",
+  "postcode": "2325",
+  "hospitalID": 44
+ },
+ {
+  "name": "Coffs Harbour Base Hospital",
+  "lhd": "Mid North Coast Local Health District",
+  "suburb": "Coffs Harbour",
+  "postcode": "2450",
+  "hospitalID": 46
+ },
+ {
+  "name": "Concord Repatriation General Hospital",
+  "lhd": "Sydney Local Health District",
+  "suburb": "Concord",
+  "postcode": "2139",
+  "hospitalID": 49
+ },
+ {
+  "name": "Dubbo Base Hospital",
+  "lhd": "Western NSW Local Health District",
+  "suburb": "Dubbo",
+  "postcode": "2830",
+  "hospitalID": 67
+ },
+ {
+  "name": "Fairfield Hospital",
+  "lhd": "South Western Sydney Local Health District",
+  "suburb": "Fairfield",
+  "postcode": "2176",
+  "hospitalID": 71
+ },
+ {
+  "name": "Gosford Hospital",
+  "lhd": "Central Coast Local Health District",
+  "suburb": "Gosford",
+  "postcode": "2250",
+  "hospitalID": 79
+ },
+ {
+  "name": "Goulburn Base Hospital",
+  "lhd": "Southern NSW Local Health District",
+  "suburb": "Goulburn",
+  "postcode": "2580",
+  "hospitalID": 80
+ },
+ {
+  "name": "Grafton Base Hospital",
+  "lhd": "Northern NSW Local Health District",
+  "suburb": "Grafton",
+  "postcode": "2460",
+  "hospitalID": 81
+ },
+ {
+  "name": "Griffith Base Hospital",
+  "lhd": "Murrumbidgee Local Health District",
+  "suburb": "Griffith",
+  "postcode": "2680",
+  "hospitalID": 84
+ },
+ {
+  "name": "Gunnedah District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Gunnedah",
+  "postcode": "2380",
+  "hospitalID": 88
+ },
+ {
+  "name": "Hornsby Ku-ring-gai Hospital",
+  "lhd": "Northern Sydney Local Health District",
+  "suburb": "Hornsby",
+  "postcode": "2077",
+  "hospitalID": 95
+ },
+ {
+  "name": "Inverell District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Inverell",
+  "postcode": "2360",
+  "hospitalID": 96
+ },
+ {
+  "name": "John Hunter Hospital (including Royal Newcastle Centre and John Hunter Children's Hospital)",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "New Lambton Heights",
+  "postcode": "2305",
+  "hospitalID": 100
+ },
+ {
+  "name": "Kempsey District Hospital",
+  "lhd": "Mid North Coast Local Health District",
+  "suburb": "Kempsey",
+  "postcode": "2440",
+  "hospitalID": 102
+ },
+ {
+  "name": "Lismore Base Hospital",
+  "lhd": "Northern NSW Local Health District",
+  "suburb": "Lismore",
+  "postcode": "2480",
+  "hospitalID": 109
+ },
+ {
+  "name": "Lithgow Integrated Health Service",
+  "lhd": "Nepean Blue Mountains Local Health District",
+  "suburb": "Lithgow",
+  "postcode": "2790",
+  "hospitalID": 110
+ },
+ {
+  "name": "Liverpool Hospital",
+  "lhd": "South Western Sydney Local Health District",
+  "suburb": "Liverpool",
+  "postcode": "2170",
+  "hospitalID": 111
+ },
+ {
+  "name": "Manning Rural Referral Hospital (Taree)",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Taree",
+  "postcode": "2430",
+  "hospitalID": 123
+ },
+ {
+  "name": "Milton Ulladulla Hospital",
+  "lhd": "Illawarra Shoalhaven Local Health District",
+  "suburb": "Milton",
+  "postcode": "2538",
+  "hospitalID": 127
+ },
+ {
+  "name": "Moree District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Moree",
+  "postcode": "2400",
+  "hospitalID": 130
+ },
+ {
+  "name": "Mount Druitt Hospital",
+  "lhd": "Western Sydney Local Health District",
+  "suburb": "Mount Druitt",
+  "postcode": "2770",
+  "hospitalID": 132
+ },
+ {
+  "name": "Murwillumbah District Hospital",
+  "lhd": "Northern NSW Local Health District",
+  "suburb": "Murwillumbah",
+  "postcode": "2484",
+  "hospitalID": 136
+ },
+ {
+  "name": "Muswellbrook Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Muswellbrook",
+  "postcode": "2333",
+  "hospitalID": 137
+ },
+ {
+  "name": "Narrabri District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Narrabri",
+  "postcode": "2390",
+  "hospitalID": 138
+ },
+ {
+  "name": "Nepean Hospital",
+  "lhd": "Nepean Blue Mountains Local Health District",
+  "suburb": "Kingswood",
+  "postcode": "2747",
+  "hospitalID": 142
+ },
+ {
+  "name": "Northern Beaches Hospital",
+  "lhd": "Northern Sydney Local Health District",
+  "suburb": "Frenchs Forest",
+  "postcode": "2086",
+  "hospitalID": 328
+ },
+ {
+  "name": "Orange Health Service",
+  "lhd": "Western NSW Local Health District",
+  "suburb": "Orange",
+  "postcode": "2800",
+  "hospitalID": 147
+ },
+ {
+  "name": "Port Macquarie Base Hospital",
+  "lhd": "Mid North Coast Local Health District",
+  "suburb": "Port Macquarie",
+  "postcode": "2444",
+  "hospitalID": 152
+ },
+ {
+  "name": "Prince of Wales Hospital",
+  "lhd": "South Eastern Sydney Local Health District",
+  "suburb": "Randwick",
+  "postcode": "2031",
+  "hospitalID": 155
+ },
+ {
+  "name": "Royal North Shore Hospital",
+  "lhd": "Northern Sydney Local Health District",
+  "suburb": "St Leonards",
+  "postcode": "2065",
+  "hospitalID": 161
+ },
+ {
+  "name": "Royal Prince Alfred Hospital",
+  "lhd": "Sydney Local Health District",
+  "suburb": "Camperdown",
+  "postcode": "2050",
+  "hospitalID": 162
+ },
+ {
+  "name": "Ryde Hospital",
+  "lhd": "Northern Sydney Local Health District",
+  "suburb": "Eastwood",
+  "postcode": "2122",
+  "hospitalID": 165
+ },
+ {
+  "name": "Shellharbour Hospital",
+  "lhd": "Illawarra Shoalhaven Local Health District",
+  "suburb": "Mt Warrigal",
+  "postcode": "2528",
+  "hospitalID": 168
+ },
+ {
+  "name": "Shoalhaven Hospital",
+  "lhd": "Illawarra Shoalhaven Local Health District",
+  "suburb": "Nowra",
+  "postcode": "2541",
+  "hospitalID": 169
+ },
+ {
+  "name": "Singleton District Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Singleton",
+  "postcode": "2330",
+  "hospitalID": 170
+ },
+ {
+  "name": "St George Hospital",
+  "lhd": "South Eastern Sydney Local Health District",
+  "suburb": "Kogarah",
+  "postcode": "2217",
+  "hospitalID": 172
+ },
+ {
+  "name": "St Vincent's Hospital",
+  "lhd": "St Vincent's Health Network",
+  "suburb": "Darlinghurst",
+  "postcode": "2010",
+  "hospitalID": 175
+ },
+ {
+  "name": "Sutherland Hospital & Community Health Service",
+  "lhd": "South Eastern Sydney Local Health District",
+  "suburb": "Caringbah",
+  "postcode": "2229",
+  "hospitalID": 176
+ },
+ {
+  "name": "Sydney Children's Hospital",
+  "lhd": "Sydney Children's Hospitals Specialty Network",
+  "suburb": "Randwick",
+  "postcode": "2031",
+  "hospitalID": 177
+ },
+ {
+  "name": "Sydney Hospital & Sydney Eye Hospital",
+  "lhd": "South Eastern Sydney Local Health District",
+  "suburb": "Sydney",
+  "postcode": "2001",
+  "hospitalID": 178
+ },
+ {
+  "name": "Tamworth Rural Referral Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Tamworth",
+  "postcode": "2340",
+  "hospitalID": 179
+ },
+ {
+  "name": "The Children's Hospital at Westmead",
+  "lhd": "Sydney Children's Hospitals Specialty Network",
+  "suburb": "Westmead",
+  "postcode": "2145",
+  "hospitalID": 181
+ },
+ {
+  "name": "The New Maitland Hospital",
+  "lhd": "Hunter New England Local Health District",
+  "suburb": "Metford",
+  "postcode": "2323",
+  "hospitalID": 120
+ },
+ {
+  "name": "Tweed Valley Hospital",
+  "lhd": "Northern NSW Local Health District",
+  "suburb": "Cudgen",
+  "postcode": "2487",
+  "hospitalID": 183
+ },
+ {
+  "name": "Wagga Wagga Base Hospital",
+  "lhd": "Murrumbidgee Local Health District",
+  "suburb": "Wagga Wagga",
+  "postcode": "2650",
+  "hospitalID": 198
+ },
+ {
+  "name": "Westmead Hospital",
+  "lhd": "Western Sydney Local Health District",
+  "suburb": "Westmead",
+  "postcode": "2145",
+  "hospitalID": 209
+ },
+ {
+  "name": "Wollongong Hospital",
+  "lhd": "Illawarra Shoalhaven Local Health District",
+  "suburb": "Wollongong",
+  "postcode": "2500",
+  "hospitalID": 213
+ },
+ {
+  "name": "Wyong Public Hospital",
+  "lhd": "Central Coast Local Health District",
+  "suburb": "Kanwal",
+  "postcode": "2259",
+  "hospitalID": 216
+ }
+]
