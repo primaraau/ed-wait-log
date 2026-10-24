@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSW ED waiting log</title>
+<style>
+:root { --bg:#f5f7f8; --card:#fff; --ink:#17212b; --muted:#5d6b78; --line:#dde3e8; --accent:#1f5f73; --hot:#b3261e; --warm:#a86400; }
+@media (prefers-color-scheme: dark) { :root { --bg:#10161b; --card:#172028; --ink:#e5eaee; --muted:#98a6b2; --line:#2a3640; --accent:#7cc0d3; --hot:#f29a91; --warm:#f0c46a; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; padding:24px max(16px,env(safe-area-inset-left)) 48px; }
+.wrap { max-width:1000px; margin:0 auto; display:grid; gap:20px }
+h1 { margin:0; font-size:26px } h2 { margin:0 0 8px; font-size:16px }
+.sub { color:var(--muted); margin:4px 0 0 }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; min-width:0 }
+.stats { display:flex; flex-wrap:wrap; gap:24px; font-variant-numeric:tabular-nums }
+.stat b { display:block; font-size:28px }
+.stat span { color:var(--muted); font-size:13px }
+svg text { fill:var(--muted); font-size:11px }
+.tablewrap { overflow-x:auto }
+table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; font-size:14px }
+th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); white-space:nowrap }
+td:first-child { white-space:normal; min-width:180px; max-width:320px }
+th { color:var(--muted); font-weight:500; cursor:pointer }
+td.n, th.n { text-align:right }
+.hot { color:var(--hot); font-weight:600 } .warm { color:var(--warm); font-weight:600 }
+select { font:inherit; padding:6px; background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:6px; max-width:100% }
+.note { color:var(--muted); font-size:13px }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>NSW emergency department waiting log</h1>
+    <p class="sub" id="asof">Loading…</p>
+  </header>
+  <section class="card stats" id="stats"></section>
+  <section class="card">
+    <h2>Patients waiting across NSW, last 7 days</h2>
+    <div id="state"></div>
+  </section>
+  <section class="card">
+    <h2>One hospital, last 7 days</h2>
+    <select id="pick" aria-label="Choose a hospital"></select>
+    <div id="one"></div>
+  </section>
+  <section class="card">
+    <h2>Right now, busiest first</h2>
+    <p class="note">Waiting per ED bed, and against the hospital's median for this hour over the past 14 days (shown once a week of data exists). Click a heading to sort.</p>
+    <div class="tablewrap"><table id="tbl"></table></div>
+  </section>
+  <p class="note">Source: NSW Health, Emergency Department waiting times in major NSW hospitals (patients triaged and waiting for treatment), logged every 15 minutes since 24 October 2026 by Primara Research. Counts are snapshots, not arrivals or waiting times. Times in Sydney time.</p>
+</div>
+<script>
+const months = []; { const d = new Date(Date.UTC(2026, 9, 1)), now = new Date(); while (d <= now) { months.push(d.toISOString().slice(0, 7)); d.setUTCMonth(d.getUTCMonth() + 1); } }
+const fmt = t => t.toLocaleString("en-AU", { timeZone: "Australia/Sydney", weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
+const sydHour = t => +t.toLocaleString("en-AU", { timeZone: "Australia/Sydney", hour: "numeric", hourCycle: "h23" });
+function parse(text) {
+  const [head, ...lines] = text.trim().split("\n"); const cols = head.split(",");
+  return lines.map(l => { const v = []; let cur = "", q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === "," && !q) { v.push(cur); cur = ""; } else cur += ch; } v.push(cur); return Object.fromEntries(cols.map((c, i) => [c, v[i]])); });
+}
+function line(el, series, label) {
+  const W = 940, H = 220, P = { l: 40, r: 10, t: 10, b: 28 };
+  if (!series.length) { el.innerHTML = '<p class="note">Not enough data yet.</p>'; return; }
+  const x0 = series[0].t, x1 = series[series.length - 1].t, ymax = Math.max(5, ...series.map(s => s.v));
+  const X = t => P.l + (W - P.l - P.r) * ((t - x0) / Math.max(1, x1 - x0)), Y = v => H - P.b - (H - P.t - P.b) * v / ymax;
+  const path = series.map((s, i) => (i ? "L" : "M") + X(s.t).toFixed(1) + " " + Y(s.v).toFixed(1)).join(" ");
+  let ticks = ""; for (let i = 0; i <= 4; i++) { const v = Math.round(ymax * i / 4); ticks += `<line x1="${P.l}" x2="${W - P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${P.l - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`; }
+  const days = []; const d = new Date(x0); d.setHours(0, 0, 0, 0); while (d <= x1) { d.setDate(d.getDate() + 1); if (d > x0 && d < x1) days.push(new Date(d)); }
+  const dl = days.map(t => `<line x1="${X(t)}" x2="${X(t)}" y1="${P.t}" y2="${H - P.b}" stroke="var(--line)"/><text x="${X(t) + 3}" y="${H - 10}">${t.toLocaleDateString("en-AU", { weekday: "short", day: "numeric" })}</text>`).join("");
+  const last = series[series.length - 1];
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${label}">${ticks}${dl}<path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="${X(last.t)}" cy="${Y(last.v)}" r="4" fill="var(--accent)"/></svg>`;
+}
+(async () => {
+  let rows = [];
+  for (const m of months) { try { const r = await fetch(`data/${m}.csv`, { cache: "no-store" }); if (r.ok) rows = rows.concat(parse(await r.text())); } catch (e) {} }
+  rows = rows.filter(r => !r.error && r.wait_count !== "").map(r => ({ ...r, t: new Date(r.polled_utc.replace(" ", "T") + "Z"), w: +r.wait_count, beds: +r.bed_capacity || null }));
+  if (!rows.length) { document.getElementById("asof").textContent = "No data yet."; return; }
+  const latestT = Math.max(...rows.map(r => +r.t)); const latest = rows.filter(r => +r.t === latestT);
+  const first = Math.min(...rows.map(r => +r.t)); const days = (latestT - first) / 864e5;
+  document.getElementById("asof").textContent = `Last sweep ${fmt(new Date(latestT))}. ${latest.length} hospitals. Logging for ${days < 1 ? "under a day" : Math.floor(days) + " days"}.`;
+  const total = latest.reduce((a, r) => a + r.w, 0);
+  const top = [...latest].sort((a, b) => b.w - a.w)[0];
+  const over = latest.filter(r => r.beds && r.w >= r.beds).length;
+  document.getElementById("stats").innerHTML = `<div class="stat"><b>${total}</b><span>waiting across NSW now</span></div><div class="stat"><b>${top.w}</b><span>most waiting: ${top.hospital}</span></div><div class="stat"><b>${over}</b><span>hospitals with more waiting than ED beds</span></div>`;
+  const wk = rows.filter(r => r.t >= new Date(latestT - 7 * 864e5));
+  const sweeps = {}; wk.forEach(r => { sweeps[+r.t] = (sweeps[+r.t] || 0) + r.w; });
+  line(document.getElementById("state"), Object.entries(sweeps).map(([t, v]) => ({ t: new Date(+t), v })).sort((a, b) => a.t - b.t), "Total waiting across NSW");
+  const names = [...new Set(latest.map(r => r.hospital))].sort(); const pick = document.getElementById("pick");
+  pick.innerHTML = names.map(n => `<option${n === "Royal North Shore Hospital" ? " selected" : ""}>${n}</option>`).join("");
+  const drawOne = () => line(document.getElementById("one"), wk.filter(r => r.hospital === pick.value).map(r => ({ t: r.t, v: r.w })).sort((a, b) => a.t - b.t), pick.value);
+  pick.addEventListener("change", drawOne); drawOne();
+  const hr = sydHour(new Date(latestT)); const hist = rows.filter(r => r.t >= new Date(latestT - 14 * 864e5) && r.t < new Date(latestT - 36e5) && sydHour(r.t) === hr);
+  const med = a => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  let data = latest.map(r => { const m = days >= 7 ? med(hist.filter(h => h.hospital === r.hospital).map(h => h.w)) : null; return { h: r.hospital, lhd: r.lhd.replace(" Local Health District", ""), w: r.w, beds: r.beds, pb: r.beds ? r.w / r.beds : null, med: m, vs: m != null ? r.w / Math.max(m, 1) : null }; });
+  let key = "w", dir = -1; const tbl = document.getElementById("tbl");
+  const cols = [["h", "Hospital"], ["lhd", "Health district"], ["w", "Waiting", 1], ["beds", "ED beds", 1], ["pb", "Waiting per bed", 1], ["vs", "vs usual this hour", 1]];
+  const render = () => { data.sort((a, b) => ((a[key] ?? -1) > (b[key] ?? -1) ? 1 : -1) * dir);
+    tbl.innerHTML = `<thead><tr>${cols.map(([k, l, n]) => `<th class="${n ? "n" : ""}" data-k="${k}">${l}</th>`).join("")}</tr></thead><tbody>` + data.map(d => `<tr><td>${d.h}</td><td>${d.lhd}</td><td class="n">${d.w}</td><td class="n">${d.beds ?? ""}</td><td class="n ${d.pb >= 1.5 ? "hot" : d.pb >= 1 ? "warm" : ""}">${d.pb != null ? d.pb.toFixed(1) : ""}</td><td class="n ${d.vs >= 2 ? "hot" : d.vs >= 1.5 ? "warm" : ""}">${d.vs != null ? d.vs.toFixed(1) + "x" : "from day 7"}</td></tr>`).join("") + "</tbody>";
+    tbl.querySelectorAll("th").forEach(th => th.onclick = () => { if (key === th.dataset.k) dir = -dir; else { key = th.dataset.k; dir = -1; } render(); }); };
+  render();
+})();
+</script>
+</body>
+</html>
