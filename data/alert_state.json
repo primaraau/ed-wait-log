@@ -1,7 +1,7 @@
 {
  "The Children's Hospital at Westmead": "2026-11-16T08:14:00+00:00",
  "Wyong Public Hospital": "2026-11-12T02:39:00+00:00",
- "Campbelltown Hospital": "2026-11-17T02:06:00+00:00",
+ "Campbelltown Hospital": "2026-11-19T07:43:00+00:00",
  "Nepean Hospital": "2026-11-09T04:11:00+00:00",
  "Prince of Wales Hospital": "2026-11-05T16:51:00+00:00",
  "Wagga Wagga Base Hospital": "2026-11-17T10:41:00+00:00",
@@ -23,5 +23,6 @@
  "Fairfield Hospital": "2026-11-15T09:55:00+00:00",
  "Manning Rural Referral Hospital (Taree)": "2026-11-17T02:06:00+00:00",
  "Tamworth Rural Referral Hospital": "2026-11-17T02:06:00+00:00",
- "Goulburn Base Hospital": "2026-11-19T00:19:00+00:00"
+ "Goulburn Base Hospital": "2026-11-19T00:19:00+00:00",
+ "_statewide": "2026-11-19T07:43:00+00:00"
 }
